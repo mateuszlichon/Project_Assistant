@@ -1,28 +1,24 @@
 package com.lichon.ProjectAssistant.entity;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Project {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	
 	private String name;
-
+	
 	private String Voivodeship;
-
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	private Set<Beneficiary> beneficiary;
+	
+	@OneToOne
+	private Beneficiary beneficiary;
 
 	public Project() {
 		super();
@@ -52,12 +48,13 @@ public class Project {
 		Voivodeship = voivodeship;
 	}
 
-	public Set<Beneficiary> getBeneficiary() {
+	public Beneficiary getBeneficiary() {
 		return beneficiary;
 	}
 
-	public void setBeneficiary(Set<Beneficiary> beneficiary) {
+	public void setBeneficiary(Beneficiary beneficiary) {
 		this.beneficiary = beneficiary;
 	}
-
+	
+	
 }
