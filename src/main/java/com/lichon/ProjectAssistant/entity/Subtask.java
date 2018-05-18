@@ -1,9 +1,15 @@
 package com.lichon.ProjectAssistant.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Subtask {
@@ -19,6 +25,12 @@ public class Subtask {
 	private int numberOfParticipants;
 
 	private int numberOfHours;
+
+	@ManyToOne
+	private ExecutingEntity executingEntity;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	private Set<Trainer> trainer;
 
 	public Subtask() {
 		super();
@@ -62,6 +74,22 @@ public class Subtask {
 
 	public void setNumberOfHours(int numberOfHours) {
 		this.numberOfHours = numberOfHours;
+	}
+
+	public ExecutingEntity getExecutingEntity() {
+		return executingEntity;
+	}
+
+	public void setExecutingEntity(ExecutingEntity executingEntity) {
+		this.executingEntity = executingEntity;
+	}
+
+	public Set<Trainer> getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(Set<Trainer> trainer) {
+		this.trainer = trainer;
 	}
 
 }
