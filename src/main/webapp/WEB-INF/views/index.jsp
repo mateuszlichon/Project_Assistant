@@ -15,7 +15,7 @@
   <body>
     <div>
       <div>
-        <h1>Welcome to Project Assistant</h1>
+        <h1>Witamy w programie Project Assistant</h1>
       </div>
     </div>
 

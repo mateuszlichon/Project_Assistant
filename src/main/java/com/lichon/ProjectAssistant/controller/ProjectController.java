@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lichon.ProjectAssistant.entity.Beneficiary;
-import com.lichon.ProjectAssistant.repository.BeneficiaryRepository;
+import com.lichon.ProjectAssistant.entity.Project;
+import com.lichon.ProjectAssistant.repository.ProjectRepository;
 
 @RestController
-@RequestMapping("/beneficiaries")
-public class BeneficiaryController {
+@RequestMapping("/projects")
+public class ProjectController {
 
 	@Autowired
-	private BeneficiaryRepository beneficiaryRepository;
+	private ProjectRepository projectRepository;;
 
 	@GetMapping("")
-	private List<Beneficiary> getAllBeneficiaries() {
-		return beneficiaryRepository.findAll();
+	private List<Project> getAllBeneficiaries() {
+		return projectRepository.findAll();
 	}
-
 }

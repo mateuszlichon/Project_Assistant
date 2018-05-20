@@ -1,4 +1,4 @@
-package com.lichon.ProjectAssistant;
+package com.lichon.ProjectAssistant.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
