@@ -26,6 +26,7 @@
           <th scope="col">województwo</th>
           <th scope="col">nazwa projektu</th>
           <th scope="col">beneficjent</th>
+          <th scope="col">zadania</th>
         </tr>
       </thead>
       <tbody class="projectsList">
