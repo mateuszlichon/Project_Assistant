@@ -45,7 +45,7 @@
     <body>
       <div>
         <div>
-          <h1 class="text-center">Witamy w programie Project Assistant</h1>
+          <h1 class="text-center">Zarejestrowane projekty</h1>
         </div>
       </div>
       <br/>

@@ -18,7 +18,17 @@ $(function () {
             '<div class="dropdown-menu project'+elem.id+'-tasks">' +
             '</div>' +
         '</div>' +
-        '</td>' +
+        // '</tr>' +
+        // '<tr class="table-active">' +
+        // '<td>'+
+        // '<table>'+
+        //   '<tr>'+
+        //     '<td>'+
+        //       'lalala'+
+        //     '</td>'+
+        //   '</tr>'+
+        // '</table>'+
+        // '</td>'+
         '</tr>');
         renderTastksForMenu(elem)
       })
@@ -37,7 +47,7 @@ $(function () {
         partners += coma + partner.name;
         numberOfPartners ++;
       })
-      $('.project'+elem.id+'-tasks').append('<a class="dropdown-item" href="#">' + task.name + ' <br>('+ partners +')</a>')
+      $('.project'+elem.id+'-tasks').append('<a class="dropdown-item" href="task' + task.id +'">' + task.name + ' <br>('+ partners +')</a>')
     })
   }
 
