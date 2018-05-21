@@ -9,9 +9,9 @@ $(function () {
       var data = response.content;
       response.forEach(function (elem) {
         $('.projectsList').append('<tr class="table-active">' +
+        '<td>' + elem.beneficiary.name + '</td>' +
         '<td>' + elem.voivodeship + '</td>' +
         '<td>' + elem.name + '</td>' +
-        '<td>' + elem.beneficiary.name + '</td>' +
         '<td>        <div class="dropdown">' +
             '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">' +
                 'Zadania w projekcie' +
@@ -65,12 +65,12 @@ $(function () {
         partners += coma + partner.name;
         numberOfPartners ++;
       })
-      $('.project'+elem.id+'-tasks').append('<a class="dropdown-item task'+ task.id +'-subtasks subtasks" href="#">' + task.name + ' <br>('+ partners +')</a>')
+      $('.project'+elem.id+'-tasks').append('<a class="dropdown-item task'+ task.id +'-subtasks subtasks"  data-task=' + task.id + ' href="#">' + task.name + ' <br>('+ partners +')</a>')
     })
   }
 
   projectsList.on('click', '.subtasks', function(e) {
-    console.log(e.target);
+    // console.log(e.target.data('task'));
     $('.project-table').toggle('hidden');
     $('.task-table').toggle('hidden');
     renderSubtasksList('/subtasks');
