@@ -18,7 +18,7 @@ public class ProjectController {
 	private ProjectRepository projectRepository;;
 
 	@GetMapping("")
-	private List<Project> getAllBeneficiaries() {
+	private List<Project> getAllProjects() {
 		return projectRepository.findAll();
 	}
 }

@@ -49,7 +49,7 @@
         </div>
       </div>
       <br/>
-      <table class="table table-hover">
+      <table class="table table-hover project-table">
         <thead>
           <tr>
             <th scope="col">wojewodztwo</th>
@@ -65,8 +65,28 @@
             <td>Column content</td>
           </tr>
         </tbody>
+      </table>
+
+      <table class="table table-hover hidden task-table">
+        <thead>
+          <tr>
+            <th scope="col">nazwa szkolenia</th>
+            <th scope="col">miejscowosc</th>
+            <th scope="col">liczba uczestnikow</th>
+            <th scope="col">liczba godzin szkolenia</th>
+            <th scope="col">podmiot wykonujacy</th>
+            <th scope="col">trenerzy</th>
+          </tr>
+        </thead>
+        <tbody class="subtasksList">
+          <!-- <div class="hotelsList"></div> -->
+          <tr class="table-active">
+            <th scope="row">Active</th>
+            <td>Column content</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
-  </table>
   <!-- scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
