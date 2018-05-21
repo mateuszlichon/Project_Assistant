@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Task {
@@ -21,6 +22,9 @@ public class Task {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Set<Partner> partner;
+
+	@OneToMany
+	private Set<Subtask> subtask;
 
 	public Task() {
 		super();
@@ -48,6 +52,14 @@ public class Task {
 
 	public void setPartner(Set<Partner> partner) {
 		this.partner = partner;
+	}
+
+	public Set<Subtask> getSubtask() {
+		return subtask;
+	}
+
+	public void setSubtask(Set<Subtask> subtask) {
+		this.subtask = subtask;
 	}
 
 }
