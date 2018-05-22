@@ -15,9 +15,20 @@ $(function() {
   function renderBeneficiariesProjectList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function (response) {
       $('#beneficiariesProjects').empty();
+      $('#projectsTasks').empty();
       var data = response.content;
       response.forEach(function (elem) {
         $('#beneficiariesProjects').append('<button type="button" class="btn btn-info btn-block projects-choice" data-project='+elem.id+'>'+elem.name+'</button>');
+      })
+    })
+  }
+
+  function renderProjectsTasksList(endpoint) {
+    ajax.ajaxGetCallback(endpoint, function (response) {
+      $('#projectsTasks').empty();
+      var data = response.content;
+      response.task.forEach(function (elem) {
+        $('#projectsTasks').append('<button type="button" class="btn btn-warning btn-block projects-choice" data-task='+elem.id+'>'+elem.name+'</button>');
       })
     })
   }
@@ -32,14 +43,12 @@ $(function() {
 
   $('#existingBeneficiaries').on('click', '.beneficiaries-choice', function(e) {
     e.preventDefault();
-    console.log($(e.target).data('beneficiary'));
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
   })
 
   $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
     e.preventDefault();
-    console.log($(e.target).data('project'));
-    // renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
+    renderProjectsTasksList('/projects/' + $(e.target).data('project'));
   })
 
   renderExistingBeneficiariesList('/beneficiaries');
