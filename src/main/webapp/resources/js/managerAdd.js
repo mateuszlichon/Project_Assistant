@@ -80,6 +80,17 @@ $(function() {
     renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
   })
 
+  $('#taskForm').on('submit', function(e) {
+    e.preventDefault();
+    var task = formUtil.createObjectFromForm($('#project'));
+    // project.beneficiary = selectedBeneficiary;
+    ajax.ajaxPostCallback("/tasks", task, function(response) {
+    })
+    $('#taskName').val("");
+    $('#taskAddress').val("");
+    // renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
+  })
+
   $('#existingBeneficiaries').on('click', '.beneficiaries-choice', function(e) {
     e.preventDefault();
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
