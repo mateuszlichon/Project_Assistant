@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled=false)
+@EnableGlobalMethodSecurity(securedEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
@@ -19,8 +19,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		.and().formLogin()
 		.loginPage("/login")
-		.and().httpBasic()
-		.and()
-		.sessionManagement().maximumSessions(1);
+        .and().logout().logoutUrl("/logout")
+        .deleteCookies("logged_user").clearAuthentication(true).logoutSuccessUrl("/")
+        .permitAll()
+        .and().csrf().disable();
+		
+//		.and().httpBasic()
+//		.and()
+//		.sessionManagement().maximumSessions(1);
 	}
 }
