@@ -7,7 +7,7 @@ $(function() {
       $('#existingBeneficiaries').empty();
       var data = response.content;
       response.forEach(function (elem) {
-        $('#existingBeneficiaries').append('<button type="button" class="btn btn-secondary btn-block">'+elem.name+'</button>');
+        $('#existingBeneficiaries').append('<button type="button" class="btn btn-secondary btn-block beneficiaries-choice" data-beneficiary='+elem.id+'>'+elem.name+'</button>');
       })
     })
   }
@@ -17,6 +17,12 @@ $(function() {
     var beneficiary = formUtil.createObjectFromForm($('#beneficiary'));
     ajax.ajaxPostCallback("/beneficiaries", beneficiary, function(response) {})
     $('#beneficiaryName').val("");
+    renderExistingBeneficiariesList('/beneficiaries');
+  })
+
+  $('#existingBeneficiaries').on('click', '.beneficiaries-choice', function(e) {
+    e.preventDefault();
+    console.log($(e.target).data('beneficiary'));
   })
 
   renderExistingBeneficiariesList('/beneficiaries');
