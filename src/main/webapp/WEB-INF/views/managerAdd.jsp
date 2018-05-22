@@ -71,7 +71,7 @@
         <form method="post" id="projectForm">
           <br><br>
           <fieldset>
-            <legend>Nowe zadanie beneficjenta @@</legend>
+            <legend>Nowe zadanie beneficjenta <div class="beneficiaryName"></div></legend>
             <div class="form-group">
               <div id="project" class="container">
                 <!-- <label for="projectName">Nazwa zadania</label> -->
