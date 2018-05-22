@@ -59,7 +59,7 @@ $(function() {
   }
 
   projectsList.on('click', '.subtasks', function(e) {
-    // console.log(e.target.data('task'));
+    console.log($(e.target).data('task'));
     $('.project-table').toggle('hidden');
     $('.task-table').toggle('hidden');
     renderSubtasksList('/subtasks');

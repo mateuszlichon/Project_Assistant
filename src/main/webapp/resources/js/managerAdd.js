@@ -12,6 +12,16 @@ $(function() {
     })
   }
 
+  function renderBeneficiariesProjectList(endpoint) {
+    ajax.ajaxGetCallback(endpoint, function (response) {
+      $('#beneficiariesProjects').empty();
+      var data = response.content;
+      response.forEach(function (elem) {
+        $('#beneficiariesProjects').append('<button type="button" class="btn btn-secondary btn-block beneficiaries-choice" data-project='+elem.id+'>'+elem.name+'</button>');
+      })
+    })
+  }
+
   $('#beneficiaryForm').on('submit', function(e) {
     e.preventDefault();
     var beneficiary = formUtil.createObjectFromForm($('#beneficiary'));
