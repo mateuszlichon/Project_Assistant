@@ -56,6 +56,14 @@ $('#beneficiaryForm').on('submit', function(e) {
   renderExistingBeneficiariesList('/beneficiaries');
 })
 
+$('#projectForm').on('submit', function(e) {
+  e.preventDefault();
+  var project = formUtil.createObjectFromForm($('#project'));
+  ajax.ajaxPostCallback("/projects", project, function(response) {})
+  $('#projectName').val("");
+  renderExistingBeneficiariesList('/projects');
+})
+
 $('#existingBeneficiaries').on('click', '.beneficiaries-choice', function(e) {
   e.preventDefault();
   renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));

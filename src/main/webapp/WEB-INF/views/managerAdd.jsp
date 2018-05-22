@@ -69,6 +69,21 @@
         <div id="existingBeneficiaries"></div>
       </div>
       <div class="col-sm-3">
+        <form method="post" id="projectForm">
+          <br><br>
+          <fieldset>
+            <legend>Nowe zadanie beneficjenta @@</legend>
+            <div class="form-group">
+              <div id="project" class="container">
+                <label for="projectName">Nazwa zadania</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="wprowadz nazwe"><br>
+              </div>
+              <div class="container">
+                <button type="submit" class="btn btn-primary">Zatwierdz</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
         <div id="beneficiariesProjects"></div>
       </div>
       <div class="col-sm-3">
