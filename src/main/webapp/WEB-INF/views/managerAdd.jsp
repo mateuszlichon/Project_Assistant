@@ -57,8 +57,8 @@
             <legend>Nowy beneficjent</legend>
             <div class="form-group">
               <div id="beneficiary" class="container">
-                <label for="beneficiaryName">Nazwa beneficjenta</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="wprowadz nazwe"><br>
+                <!-- <label for="beneficiaryName">Nazwa beneficjenta</label> -->
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="nazwa beneficjenta"><br>
               </div>
               <div class="container">
                 <button type="submit" class="btn btn-primary">Zatwierdz</button>
@@ -66,7 +66,6 @@
             </div>
           </fieldset>
         </form>
-        <div id="existingBeneficiaries"></div>
       </div>
       <div class="col-sm-3">
         <form method="post" id="projectForm">
@@ -75,10 +74,10 @@
             <legend>Nowe zadanie beneficjenta @@</legend>
             <div class="form-group">
               <div id="project" class="container">
-                <label for="projectName">Nazwa zadania</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="wprowadz nazwe"><br>
-                <label for="projectName">wojewodztwo</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wprowadz wojewodztwo"><br>
+                <!-- <label for="projectName">Nazwa zadania</label> -->
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="nazwa projektu"><br>
+                <!-- <label for="projectName">wojewodztwo</label> -->
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wojewodztwo"><br>
               </div>
               <div class="container">
                 <button type="submit" class="btn btn-primary">Zatwierdz</button>
@@ -86,6 +85,16 @@
             </div>
           </fieldset>
         </form>
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <div id="existingBeneficiaries"></div>
+      </div>
+      <div class="col-sm-3">
         <div id="beneficiariesProjects"></div>
       </div>
       <div class="col-sm-3">
