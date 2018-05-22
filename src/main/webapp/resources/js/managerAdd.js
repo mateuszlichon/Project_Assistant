@@ -51,26 +51,19 @@ $(function() {
     e.preventDefault();
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
     $('.beneficiariesDetails').empty();
-    // $('#beneficiary'+$(e.target).data('beneficiary')+'Details').empty();
     $('#beneficiary'+$(e.target).data('beneficiary')+'Details').append('<p class="text-center">szczegoly beneficjenta</p>');
   })
 
   $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
     e.preventDefault();
-    // showProjectDetails('/projects/' + $(e.target).data('project'));
     renderProjectsTasksList('/projects/' + $(e.target).data('project'));
     $('.projectsDetails').empty();
-
-
-    // $('#beneficiary'+$(e.target).data('beneficiary')+'Details').empty();
     $('#project'+$(e.target).data('project')+'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
 
   $('#projectsTasks').on('click', '.task-choice', function(e) {
     e.preventDefault();
-    // renderProjectsTasksList('/projects/' + $(e.target).data('project'));
     $('.tasksDetails').empty();
-    // $('#beneficiary'+$(e.target).data('beneficiary')+'Details').empty();
     $('#task'+$(e.target).data('task')+'Details').append('<p class="text-center">szczegoly zadania</p>');
   })
 
