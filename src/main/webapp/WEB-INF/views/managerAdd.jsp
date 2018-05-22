@@ -102,7 +102,8 @@
                   <!-- <label for="projectName">Nazwa zadania</label> -->
                   <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="taskName" placeholder="nazwa zadania"><br>
                   <!-- <label for="projectName">wojewodztwo</label> -->
-                  <input type="text" class="form-control" aria-describedby="emailHelp" name="address" id="taskAddress" placeholder="miasto"><br>
+                  <input type="number" class="form-control" aria-describedby="emailHelp" name="groupAmount" id="groupAmount" placeholder="liczba grup"><br>
+                  <input type="number" class="form-control" aria-describedby="emailHelp" name="participantAmount" id="participantAmount" placeholder="liczba uczestnikow"><br>
                 </div>
                 <div class="container">
                   <button type="submit" class="btn btn-primary">Dodaj zadanie</button>

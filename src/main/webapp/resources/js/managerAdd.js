@@ -82,12 +82,13 @@ $(function() {
 
   $('#taskForm').on('submit', function(e) {
     e.preventDefault();
-    var task = formUtil.createObjectFromForm($('#project'));
+    var task = formUtil.createObjectFromForm($('#task'));
     // project.beneficiary = selectedBeneficiary;
     ajax.ajaxPostCallback("/tasks", task, function(response) {
     })
     $('#taskName').val("");
-    $('#taskAddress').val("");
+    $('#groupAmount').val("");
+    $('#participantAmount').val("");
     // renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
   })
 
