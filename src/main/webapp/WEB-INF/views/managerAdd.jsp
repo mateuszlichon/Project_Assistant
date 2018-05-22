@@ -49,26 +49,28 @@
       </div>
     </div>
     <br/>
-    <div class="col-sm-3">
-      <form method="post" id="beneficiaryForm">
-        <br><br>
-        <fieldset>
-          <legend>Nowy beneficjent</legend>
-          <div class="form-group">
-            <div id="beneficiary" class="container">
-              <label for="beneficiaryName">Nazwa beneficjenta</label>
-              <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="wprowadz nazwe"><br>
+    <div class="row">
+      <div class="col-sm-3">
+        <form method="post" id="beneficiaryForm">
+          <br><br>
+          <fieldset>
+            <legend>Nowy beneficjent</legend>
+            <div class="form-group">
+              <div id="beneficiary" class="container">
+                <label for="beneficiaryName">Nazwa beneficjenta</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="wprowadz nazwe"><br>
+              </div>
+              <div class="container">
+                <button type="submit" class="btn btn-primary">Zatwierdz</button>
+              </div>
             </div>
-            <div class="container">
-              <button type="submit" class="btn btn-primary">Zatwierdz</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-      <div id="existingBeneficiaries"></div>
-    </div>
-    <div class="col-sm-3">
-      <div id="beneficiariesProjects"></div>
+          </fieldset>
+        </form>
+        <div id="existingBeneficiaries"></div>
+      </div>
+      <div class="col-sm-3">
+        <div id="beneficiariesProjects"></div>
+      </div>
     </div>
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
