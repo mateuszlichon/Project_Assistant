@@ -61,6 +61,7 @@ $('#projectForm').on('submit', function(e) {
   var project = formUtil.createObjectFromForm($('#project'));
   ajax.ajaxPostCallback("/projects", project, function(response) {})
   $('#projectName').val("");
+  $('#projectVoivodeship').val("");
   renderExistingBeneficiariesList('/projects');
 })
 

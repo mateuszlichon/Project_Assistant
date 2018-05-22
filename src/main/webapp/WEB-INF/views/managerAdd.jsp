@@ -77,6 +77,8 @@
               <div id="project" class="container">
                 <label for="projectName">Nazwa zadania</label>
                 <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="wprowadz nazwe"><br>
+                <label for="projectName">wojewodztwo</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wprowadz wojewodztwo"><br>
               </div>
               <div class="container">
                 <button type="submit" class="btn btn-primary">Zatwierdz</button>
