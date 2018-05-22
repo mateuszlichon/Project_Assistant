@@ -49,42 +49,47 @@
       </div>
     </div>
     <br/>
-    <div class="row">
-      <div class="col-sm-3">
-        <form method="post" id="beneficiaryForm">
-          <br><br>
-          <fieldset>
-            <legend>Nowy beneficjent</legend>
-            <div class="form-group">
-              <div id="beneficiary" class="container">
-                <!-- <label for="beneficiaryName">Nazwa beneficjenta</label> -->
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="nazwa beneficjenta"><br>
+    <button type="button" class="addFormsOn">Dodaj</button>
+    <div class="addForms hidden">
+      <div class="row">
+        <div class="col-sm-3">
+          <form method="post" id="beneficiaryForm">
+            <br><br>
+            <fieldset>
+              <legend>Nowy beneficjent</legend>
+              <div class="form-group">
+                <div id="beneficiary" class="container">
+                  <!-- <label for="beneficiaryName">Nazwa beneficjenta</label> -->
+                  <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="nazwa beneficjenta"><br>
+                </div>
+                <div class="container">
+                  <button type="submit" class="btn btn-primary">Zatwierdz</button>
+                </div>
               </div>
-              <div class="container">
-                <button type="submit" class="btn btn-primary">Zatwierdz</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <form method="post" id="projectForm">
+            <br><br>
+            <fieldset>
+              <legend>Nowe zadanie beneficjenta
+                <div class="beneficiaryName"></div>
+              </legend>
+              <div class="form-group">
+                <div id="project" class="container">
+                  <!-- <label for="projectName">Nazwa zadania</label> -->
+                  <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="nazwa projektu"><br>
+                  <!-- <label for="projectName">wojewodztwo</label> -->
+                  <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wojewodztwo"><br>
+                </div>
+                <div class="container">
+                  <button type="submit" class="btn btn-primary">Zatwierdz</button>
+                </div>
               </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-      <div class="col-sm-3">
-        <form method="post" id="projectForm">
-          <br><br>
-          <fieldset>
-            <legend>Nowe zadanie beneficjenta <div class="beneficiaryName"></div></legend>
-            <div class="form-group">
-              <div id="project" class="container">
-                <!-- <label for="projectName">Nazwa zadania</label> -->
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="projectName" placeholder="nazwa projektu"><br>
-                <!-- <label for="projectName">wojewodztwo</label> -->
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wojewodztwo"><br>
-              </div>
-              <div class="container">
-                <button type="submit" class="btn btn-primary">Zatwierdz</button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
+            </fieldset>
+          </form>
+        </div>
       </div>
       <div class="col-sm-3">
       </div>

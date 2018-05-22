@@ -102,6 +102,10 @@ $(function() {
     $('#task' + $(e.target).data('task') + 'Details').append('<p class="text-center">' + taskDescription + '</p>');
   })
 
+  $('.addFormsOn').on('click', function() {
+    $('.addForms').toggle('hidden');
+  })
+
   renderExistingBeneficiariesList('/beneficiaries');
 
 });
