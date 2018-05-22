@@ -63,7 +63,7 @@
                   <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="nazwa beneficjenta"><br>
                 </div>
                 <div class="container">
-                  <button type="submit" class="btn btn-primary">Zatwierdz</button>
+                  <button type="submit" class="btn btn-primary">Dodaj beneficjenta</button>
                 </div>
               </div>
             </fieldset>
@@ -73,7 +73,7 @@
           <form method="post" id="projectForm">
             <br><br>
             <fieldset>
-              <legend>Nowe zadanie beneficjenta
+              <legend>Nowy projekt beneficjenta
                 <div class="beneficiaryName"></div>
               </legend>
               <div class="form-group">
@@ -84,14 +84,33 @@
                   <input type="text" class="form-control" aria-describedby="emailHelp" name="voivodeship" id="projectVoivodeship" placeholder="wojewodztwo"><br>
                 </div>
                 <div class="container">
-                  <button type="submit" class="btn btn-primary">Zatwierdz</button>
+                  <button type="submit" class="btn btn-primary">Dodaj projekt</button>
                 </div>
               </div>
             </fieldset>
           </form>
         </div>
-      </div>
-      <div class="col-sm-3">
+        <div class="col-sm-3">
+          <form method="post" id="taskForm">
+            <br><br>
+            <fieldset>
+              <legend>Nowe zadanie
+                <div class="taskName"></div>
+              </legend>
+              <div class="form-group">
+                <div id="task" class="container">
+                  <!-- <label for="projectName">Nazwa zadania</label> -->
+                  <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="taskName" placeholder="nazwa zadania"><br>
+                  <!-- <label for="projectName">wojewodztwo</label> -->
+                  <input type="text" class="form-control" aria-describedby="emailHelp" name="address" id="taskAddress" placeholder="miasto"><br>
+                </div>
+                <div class="container">
+                  <button type="submit" class="btn btn-primary">Dodaj zadanie</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </div>
     </div>
     <hr>
