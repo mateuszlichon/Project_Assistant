@@ -1,6 +1,7 @@
 package com.lichon.ProjectAssistant.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,11 @@ public class ProjectController {
 	@GetMapping("")
 	private List<Project> getAllProjects() {
 		return projectRepository.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	private Optional<Project> getProjectById(@PathVariable long id) {
+		return projectRepository.findById(id);
 	}
 	
 	@GetMapping("/beneficiary/{id}")

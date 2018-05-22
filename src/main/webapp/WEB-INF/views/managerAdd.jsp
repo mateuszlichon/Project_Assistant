@@ -71,6 +71,9 @@
       <div class="col-sm-3">
         <div id="beneficiariesProjects"></div>
       </div>
+      <div class="col-sm-3">
+        <div id="projectsTasks"></div>
+      </div>
     </div>
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

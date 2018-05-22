@@ -17,7 +17,7 @@ $(function() {
       $('#beneficiariesProjects').empty();
       var data = response.content;
       response.forEach(function (elem) {
-        $('#beneficiariesProjects').append('<button type="button" class="btn btn-info btn-block beneficiaries-choice" data-project='+elem.id+'>'+elem.name+'</button>');
+        $('#beneficiariesProjects').append('<button type="button" class="btn btn-info btn-block projects-choice" data-project='+elem.id+'>'+elem.name+'</button>');
       })
     })
   }
@@ -34,6 +34,12 @@ $(function() {
     e.preventDefault();
     console.log($(e.target).data('beneficiary'));
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
+  })
+
+  $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
+    e.preventDefault();
+    console.log($(e.target).data('project'));
+    // renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
   })
 
   renderExistingBeneficiariesList('/beneficiaries');

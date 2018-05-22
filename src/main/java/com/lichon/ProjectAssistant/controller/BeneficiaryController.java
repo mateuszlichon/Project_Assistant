@@ -27,7 +27,7 @@ public class BeneficiaryController {
 	}
 	
 	@GetMapping("/{id}")
-	private Optional<Beneficiary> getTaskById(@PathVariable long id) {
+	private Optional<Beneficiary> getBeneficiaryById(@PathVariable long id) {
 		return beneficiaryRepository.findById(id);
 	}
 	
