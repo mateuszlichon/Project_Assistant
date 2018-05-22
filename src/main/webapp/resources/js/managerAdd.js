@@ -86,11 +86,12 @@ $(function() {
     e.preventDefault();
     var task = formUtil.createObjectFromForm($('#task'));
     // project.beneficiary = selectedBeneficiary;
-    selectedProject.task = task;
     ajax.ajaxPostCallback("/tasks", task, function(response) {
     })
+    selectedProject.task.push(task);
+    var project = selectedProject;
     ajax.ajaxPutCallback("/projects", project, function(response) {
-      
+
     })
     $('#taskName').val("");
     $('#groupAmount').val("");
