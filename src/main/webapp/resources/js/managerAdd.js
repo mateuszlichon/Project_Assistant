@@ -2,6 +2,7 @@ $(function() {
   var ajax = new Ajax();
   var formUtil = new FormUtil();
   var projectDescription = "";
+  var taskDescription = "";
 
   function renderExistingBeneficiariesList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function (response) {

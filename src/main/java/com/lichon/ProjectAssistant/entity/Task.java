@@ -20,6 +20,10 @@ public class Task {
 
 	private String name;
 
+	private int groupAmount;
+
+	private int participantAmount;
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Set<Partner> partner;
 
@@ -60,6 +64,22 @@ public class Task {
 
 	public void setSubtask(Set<Subtask> subtask) {
 		this.subtask = subtask;
+	}
+
+	public int getGroupAmount() {
+		return groupAmount;
+	}
+
+	public void setGroupAmount(int groupAmount) {
+		this.groupAmount = groupAmount;
+	}
+
+	public int getParticipantAmount() {
+		return participantAmount;
+	}
+
+	public void setParticipantAmount(int participantAmount) {
+		this.participantAmount = participantAmount;
 	}
 
 }
