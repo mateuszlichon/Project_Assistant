@@ -1,6 +1,7 @@
 $(function() {
   var ajax = new Ajax();
   var formUtil = new FormUtil();
+  var projectDescription = "";
 
   function renderExistingBeneficiariesList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function (response) {
@@ -29,6 +30,8 @@ $(function() {
     ajax.ajaxGetCallback(endpoint, function (response) {
       $('#projectsTasks').empty();
       var data = response.content;
+      projectDescription = "";
+      projectDescription = '<li>wojewodztwo: '+response.voivodeship+'</li>';
       response.task.forEach(function (elem) {
         $('#projectsTasks').append('<button type="button" class="btn btn-warning btn-block task-choice" data-task='+elem.id+'>'+elem.name+'</button>'+
       '<div class="tasksDetails" id="task'+elem.id+'Details"></div><br/>');
@@ -54,10 +57,13 @@ $(function() {
 
   $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
     e.preventDefault();
+    // showProjectDetails('/projects/' + $(e.target).data('project'));
     renderProjectsTasksList('/projects/' + $(e.target).data('project'));
     $('.projectsDetails').empty();
+
+
     // $('#beneficiary'+$(e.target).data('beneficiary')+'Details').empty();
-    $('#project'+$(e.target).data('project')+'Details').append('<p class="text-center">szczegoly projektu</p>');
+    $('#project'+$(e.target).data('project')+'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
 
   $('#projectsTasks').on('click', '.task-choice', function(e) {
