@@ -55,9 +55,9 @@
           <fieldset>
             <legend>Nowy beneficjent</legend>
             <div class="form-group">
-              <div id="name1" class="container">
-                <label for="name2">Nazwa beneficjenta</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" name="name3" id="name4" placeholder="wprowadz nazwe"><br>
+              <div id="beneficiary" class="container">
+                <label for="beneficiaryName">Nazwa beneficjenta</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="name" id="beneficiaryName" placeholder="wprowadz nazwe"><br>
               </div>
               <div class="container">
                 <button type="submit" class="btn btn-primary">Zatwierdz</button>

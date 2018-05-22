@@ -74,3 +74,27 @@ Ajax.prototype.ajaxPutCallback = function (endpoint, data, callback) {
         console.log(xhr, status, error);
     });
 };
+
+var FormUtil = function () {
+};
+
+FormUtil.prototype.createObjectFromForm = function (form) {
+    var object = {};
+    $(form).find('input[type!=submit]').each(function (index, elem) {
+        object[elem.name] = elem.value;
+    });
+    return object;
+};
+
+FormUtil.prototype.createObjectListFromForm = function (form) {
+    var list = Array();
+    var object = {};
+    $(form).find('input[type!=submit]').each(function (index, elem) {
+        while (!object.hasOwnProperty(elem.name)) {
+            object[elem.name] = elem.value;
+        }
+        list.push(object);
+        object = {};
+    });
+    return list;
+};
