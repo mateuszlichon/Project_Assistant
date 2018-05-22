@@ -5,6 +5,7 @@ $(function() {
   var projectDescription = "";
   var taskDescription = "";
   var selectedBeneficiary;
+  var selectedProject;
 
   function renderExistingBeneficiariesList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
@@ -35,6 +36,7 @@ $(function() {
       var data = response.content;
       projectDescription = "";
       projectDescription = '<li>wojewodztwo: ' + response.voivodeship + '</li>';
+      selectedProject = response;
       response.task.forEach(function(elem) {
         $('#projectsTasks').append('<button type="button" class="btn btn-warning btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
@@ -84,7 +86,11 @@ $(function() {
     e.preventDefault();
     var task = formUtil.createObjectFromForm($('#task'));
     // project.beneficiary = selectedBeneficiary;
+    selectedProject.task = task;
     ajax.ajaxPostCallback("/tasks", task, function(response) {
+    })
+    ajax.ajaxPutCallback("/projects", project, function(response) {
+      
     })
     $('#taskName').val("");
     $('#groupAmount').val("");
