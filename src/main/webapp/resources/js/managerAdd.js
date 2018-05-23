@@ -219,10 +219,12 @@ $(function() {
   function renderViewButtons() {
     $('.viewButtons').empty();
     $('.viewButtons').append(
-      '<button type="button" class="addFormsOn ' + addButtonOn + '">Pokaz opcje dodawania</button>' +
-      '<button type="button" class="addFormsOff ' + addButtonOff + '">Ukryj opcje dodawania</button>' +
-      '<button type="button" class="deleteButtonsOn ' + deleteButtonOn + '">Pokaz opcje usuwania</button>' +
-      '<button type="button" class="deleteButtonsOff ' + deleteButtonOff + '">Ukryj opcje usuwania</button>'
+      '<div class="btn-group">'+
+      '<div class="' + addButtonOn + '"><button class="addFormsOn btn btn-success">Pokaz opcje dodawania</button></div>' +
+      '<div class="' + addButtonOff + '"><button class="addFormsOff btn btn-success">Ukryj opcje dodawania</button></div>' +
+      '<div class="' + deleteButtonOn + '"><button class="deleteButtonsOn btn btn-danger">Pokaz opcje usuwania</button></div>' +
+      '<div class="' + deleteButtonOff + '"><button class="deleteButtonsOff btn btn-danger">Ukryj opcje usuwania</button></div>'+
+      '</div>'
     )
   }
 

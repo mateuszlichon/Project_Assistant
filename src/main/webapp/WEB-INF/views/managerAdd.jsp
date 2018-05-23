@@ -45,13 +45,16 @@
 
     <div>
       <div>
-        <h1 class="text-center">Dodawanie</h1>
+        <h1 class="text-center">Centrum zarzadzania projektami</h1><br/>
+        <h1 class="text-center"><div class="viewButtons container"></div></h1>
       </div>
     </div>
     <br/>
-    <div class="viewButtons"></div>
+
     <div class="addForms">
       <div class="row">
+        <div class="col-sm-1">
+        </div>
         <div class="col-sm-3">
           <form method="post" class="hidden" id="beneficiaryForm">
             <br><br>
@@ -116,6 +119,8 @@
     </div>
     <hr>
     <div class="row">
+      <div class="col-sm-1">
+      </div>
       <div class="col-sm-3">
         <div id="existingBeneficiaries"></div>
       </div>
