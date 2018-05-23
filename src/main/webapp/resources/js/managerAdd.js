@@ -16,8 +16,8 @@ $(function() {
       $('#existingBeneficiaries').empty();
       var data = response.content;
       response.forEach(function(elem) {
-        $('#existingBeneficiaries').append('<button type="button" class="btn btn-info btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-beneficiary hidden"><button type="button" class="btn btn-danger" id="delete-beneficiary-' + elem.id + '">usun</button></div>' +
+        $('#existingBeneficiaries').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
+          '<div class="delete-button-beneficiary hidden"><button type="button" class="btn btn-danger" id="delete-beneficiary-' + elem.id + '">usun</button></div></div>' +
           '<div class="beneficiariesDetails" id="beneficiary' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -29,8 +29,8 @@ $(function() {
       $('#projectsTasks').empty();
       var data = response.content;
       response.forEach(function(elem) {
-        $('#beneficiariesProjects').append('<button type="button" class="btn btn-info btn-block projects-choice" data-project=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-project hidden"><button type="button" class="btn btn-danger" id="delete-project-' + elem.id + '">usun</button></div>' +
+        $('#beneficiariesProjects').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block projects-choice" data-project=' + elem.id + '>' + elem.name + '</button>' +
+          '<div class="delete-button-project hidden"><button type="button" class="btn btn-danger" id="delete-project-' + elem.id + '">usun</button></div></div>' +
           '<div class="projectsDetails" id="project' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -42,8 +42,8 @@ $(function() {
       console.log(response);
       var data = response.content;
       response.forEach(function(elem) {
-        $('#projectsTasks').append('<button type="button" class="btn btn-info btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-task hidden"><button type="button" class="btn btn-danger" id="delete-task-' + elem.id + '">usun</button></div>' +
+        $('#projectsTasks').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
+          '<div class="delete-button-task hidden"><button type="button" class="btn btn-danger" id="delete-task-' + elem.id + '">usun</button></div></div>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
       })
     })
