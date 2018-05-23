@@ -50,6 +50,7 @@
     </div>
     <br/>
     <button type="button" class="addFormsOn">Dodaj</button>
+    <button type="button" class="deleteButtons">Usun</button>
     <div class="addForms hidden">
       <div class="row">
         <div class="col-sm-3">
