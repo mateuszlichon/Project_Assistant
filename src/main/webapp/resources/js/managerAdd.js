@@ -12,7 +12,7 @@ $(function() {
       $('#existingBeneficiaries').empty();
       var data = response.content;
       response.forEach(function(elem) {
-        $('#existingBeneficiaries').append('<button type="button" class="btn btn-primary btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
+        $('#existingBeneficiaries').append('<button type="button" class="btn btn-info btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
           '<div class="beneficiariesDetails" id="beneficiary' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -36,7 +36,7 @@ $(function() {
       console.log(response);
       var data = response.content;
       response.forEach(function(elem) {
-        $('#projectsTasks').append('<button type="button" class="btn btn-warning btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
+        $('#projectsTasks').append('<button type="button" class="btn btn-info btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -81,8 +81,7 @@ $(function() {
     e.preventDefault();
     var project = formUtil.createObjectFromForm($('#project'));
     project.beneficiary = selectedBeneficiary;
-    ajax.ajaxPostCallback("/projects", project, function(response) {
-    })
+    ajax.ajaxPostCallback("/projects", project, function(response) {})
     $('#projectName').val("");
     $('#projectVoivodeship').val("");
     renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
@@ -92,8 +91,7 @@ $(function() {
     e.preventDefault();
     var task = formUtil.createObjectFromForm($('#task'));
     task.project = selectedProject;
-    ajax.ajaxPostCallback("/tasks", task, function(response) {
-    })
+    ajax.ajaxPostCallback("/tasks", task, function(response) {})
     $('#taskName').val("");
     $('#groupAmount').val("");
     $('#participantAmount').val("");
@@ -104,18 +102,25 @@ $(function() {
     e.preventDefault();
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
     showBeneficiaryDetails('/beneficiaries/' + $(e.target).data('beneficiary'));
-    $('.beneficiaries-choice').removeClass('btn-primary');
-    $('.beneficiaries-choice').addClass('btn-light');
-    $(e.target).removeClass('btn-light');
-    $(e.target).addClass('btn-danger');
+    adjustChoiceCollor($(e.target), $('.beneficiaries-choice'));
     $('.beneficiariesDetails').empty();
     $('#beneficiary' + $(e.target).data('beneficiary') + 'Details').append('<p class="text-center">' + beneficiaryDescription + '</p>');
   })
+
+  function adjustChoiceCollor(target, category) {
+    category.removeClass('btn-info');
+    category.removeClass('btn-warning');
+    category.removeClass('btn-basic');
+    category.addClass('btn-basic');
+    target.removeClass('btn-basic');
+    target.addClass('btn-warning');
+  }
 
   $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
     e.preventDefault();
     showProjectDetails('/projects/' + $(e.target).data('project'));
     renderProjectsTasksList('/tasks/project/' + $(e.target).data('project'));
+    adjustChoiceCollor($(e.target), $('.projects-choice'));
     $('.projectsDetails').empty();
     $('#project' + $(e.target).data('project') + 'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
@@ -123,6 +128,7 @@ $(function() {
   $('#projectsTasks').on('click', '.task-choice', function(e) {
     e.preventDefault();
     $('.tasksDetails').empty();
+    adjustChoiceCollor($(e.target), $('.task-choice'));
     showTaskDetails('/tasks/' + $(e.target).data('task'));
     $('#task' + $(e.target).data('task') + 'Details').append('<p class="text-center">' + taskDescription + '</p>');
   })
