@@ -6,6 +6,10 @@ $(function() {
   var taskDescription = "";
   var selectedBeneficiary;
   var selectedProject;
+  var addButtonOn = "";
+  var addButtonOff = "hidden";
+  var deleteButtonOn = "";
+  var deleteButtonOff = "hidden";
 
   function renderExistingBeneficiariesList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
@@ -106,6 +110,8 @@ $(function() {
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
     showBeneficiaryDetails('/beneficiaries/' + $(e.target).data('beneficiary'));
     adjustChoiceCollor($(e.target), $('.beneficiaries-choice'));
+    selectedProject = undefined;
+    updateAddView();
     $('.beneficiariesDetails').empty();
     $('#beneficiary' + $(e.target).data('beneficiary') + 'Details').append('<p class="text-center">' + beneficiaryDescription + '</p>');
   })
@@ -125,6 +131,7 @@ $(function() {
     renderProjectsTasksList('/tasks/project/' + $(e.target).data('project'));
     adjustChoiceCollor($(e.target), $('.projects-choice'));
     $('.projectsDetails').empty();
+    updateAddView();
     $('#project' + $(e.target).data('project') + 'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
 
@@ -133,17 +140,68 @@ $(function() {
     $('.tasksDetails').empty();
     adjustChoiceCollor($(e.target), $('.task-choice'));
     showTaskDetails('/tasks/' + $(e.target).data('task'));
+    updateAddView();
     $('#task' + $(e.target).data('task') + 'Details').append('<p class="text-center">' + taskDescription + '</p>');
   })
 
-  $('.addFormsOn').on('click', function() {
-    $('.addForms').toggle('hidden');
+  $('.viewButtons').on('click', '.addFormsOn', function() {
+    addButtonOn = "hidden";
+    addButtonOff = "";
+    renderViewButtons();
+    updateAddView();
   })
 
-  $('.deleteButtons').on('click', function() {
-    $('.delete-button').toggle('hidden');
+  $('.viewButtons').on('click', '.addFormsOff', function() {
+    addButtonOn = "";
+    addButtonOff = "hidden";
+    renderViewButtons();
+    updateAddView();
   })
+
+  $('.viewButtons').on('click', '.deleteButtonsOn', function() {
+    deleteButtonOn = "hidden";
+    deleteButtonOff = "";
+    renderViewButtons();
+  })
+
+  $('.viewButtons').on('click', '.deleteButtonsOff', function() {
+    deleteButtonOn = "";
+    deleteButtonOff = "hidden";
+    renderViewButtons();
+  })
+
+  function updateAddView() {
+    if (addButtonOff == "") {
+      $('#beneficiaryForm').removeClass('hidden');
+    } else {
+      $('#beneficiaryForm').addClass('hidden');
+    }
+    if (selectedBeneficiary != undefined && addButtonOff == "") {
+      $('#projectForm').removeClass('hidden');
+    } else {
+      $('#projectForm').addClass('hidden');
+    }
+
+    if (selectedProject != undefined && addButtonOff == "") {
+      $('#taskForm').removeClass('hidden');
+    } else {
+      $('#taskForm').addClass('hidden');
+    }
+
+    console.log(selectedProject);
+  }
+
+  function renderViewButtons() {
+    $('.viewButtons').empty();
+    $('.viewButtons').append(
+      '<button type="button" class="addFormsOn '+ addButtonOn+'">Pokaz opcje dodawania</button>'+
+      '<button type="button" class="addFormsOff '+ addButtonOff+'">Ukryj opcje dodawania</button>'+
+      '<button type="button" class="deleteButtonsOn '+ deleteButtonOn+'">Pokaz opcje usuwania</button>' +
+      '<button type="button" class="deleteButtonsOff '+ deleteButtonOff+'">Ukryj opcje usuwania</button>'
+    )
+  }
 
   renderExistingBeneficiariesList('/beneficiaries');
+  renderViewButtons();
 
 });

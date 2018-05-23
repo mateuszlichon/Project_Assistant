@@ -49,12 +49,11 @@
       </div>
     </div>
     <br/>
-    <button type="button" class="addFormsOn">Dodaj</button>
-    <button type="button" class="deleteButtons">Usun</button>
-    <div class="addForms hidden">
+    <div class="viewButtons"></div>
+    <div class="addForms">
       <div class="row">
         <div class="col-sm-3">
-          <form method="post" id="beneficiaryForm">
+          <form method="post" class="hidden" id="beneficiaryForm">
             <br><br>
             <fieldset>
               <legend>Nowy beneficjent</legend>
@@ -71,7 +70,7 @@
           </form>
         </div>
         <div class="col-sm-3">
-          <form method="post" id="projectForm">
+          <form method="post" class="hidden" id="projectForm">
             <br><br>
             <fieldset>
               <legend>Nowy projekt beneficjenta
@@ -92,7 +91,7 @@
           </form>
         </div>
         <div class="col-sm-3">
-          <form method="post" id="taskForm">
+          <form method="post" class="hidden" id="taskForm">
             <br><br>
             <fieldset>
               <legend>Nowe zadanie
