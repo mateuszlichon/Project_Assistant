@@ -85,14 +85,15 @@ $(function() {
   $('#taskForm').on('submit', function(e) {
     e.preventDefault();
     var task = formUtil.createObjectFromForm($('#task'));
+    task.project = selectedProject;
     // project.beneficiary = selectedBeneficiary;
     ajax.ajaxPostCallback("/tasks", task, function(response) {
     })
-    selectedProject.task.push(task);
-    var project = selectedProject;
-    ajax.ajaxPutCallback("/projects", project, function(response) {
-
-    })
+    // selectedProject.task.push(task);
+    // var project = selectedProject;
+    // ajax.ajaxPutCallback("/projects", project, function(response) {
+    //
+    // })
     $('#taskName').val("");
     $('#groupAmount').val("");
     $('#participantAmount').val("");

@@ -1,13 +1,9 @@
 package com.lichon.ProjectAssistant.entity;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,9 +19,6 @@ public class Project {
 
 	@OneToOne
 	private Beneficiary beneficiary;
-
-	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-	private Set<Task> task;
 
 	public Project() {
 		super();
@@ -61,14 +54,6 @@ public class Project {
 
 	public void setBeneficiary(Beneficiary beneficiary) {
 		this.beneficiary = beneficiary;
-	}
-
-	public Set<Task> getTask() {
-		return task;
-	}
-
-	public void setTask(Set<Task> task) {
-		this.task = task;
 	}
 
 }

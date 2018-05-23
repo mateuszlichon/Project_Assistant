@@ -1,5 +1,6 @@
 package com.lichon.ProjectAssistant.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class TaskController {
 	@GetMapping("/{id}")
 	private Optional<Task> getTaskById(@PathVariable long id) {
 		return taskRepository.findById(id);
+	}
+	
+	@GetMapping("/project/{id}")
+	private List<Task> getTasksByProjectId(@PathVariable long id) {
+		return taskRepository.findAllByProjectId(id);
 	}
 	
 	@PostMapping("")
