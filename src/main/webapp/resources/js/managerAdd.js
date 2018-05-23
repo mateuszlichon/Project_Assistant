@@ -17,7 +17,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#existingBeneficiaries').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-beneficiary hidden"><button type="button" class="btn btn-danger" id="delete-beneficiary-' + elem.id + '">usun</button></div></div>' +
+          '<div class="delete-button-beneficiary hidden"><button type="button" class="btn btn-danger" data-task=' + elem.id + ' id="delete-beneficiary-' + elem.id + '">usun</button></div></div>' +
           '<div class="beneficiariesDetails" id="beneficiary' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -30,7 +30,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#beneficiariesProjects').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block projects-choice" data-project=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-project hidden"><button type="button" class="btn btn-danger" id="delete-project-' + elem.id + '">usun</button></div></div>' +
+          '<div class="delete-button-project hidden"><button type="button" class="btn btn-danger" data-task=' + elem.id + ' id="delete-project-' + elem.id + '">usun</button></div></div>' +
           '<div class="projectsDetails" id="project' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -43,7 +43,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#projectsTasks').append('<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons"><button type="button" class="btn btn-info btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
-          '<div class="delete-button-task hidden"><button type="button" class="btn btn-danger" id="delete-task-' + elem.id + '">usun</button></div></div>' +
+          '<div class="delete-button-task hidden"><button type="button" class="btn btn-danger" data-task=' + elem.id + ' id="delete-task-' + elem.id + '">usun</button></div></div>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -162,7 +162,6 @@ $(function() {
   })
 
   $('.viewButtons').on('click', '.deleteButtonsOn', function() {
-    console.log('test');
     deleteButtonOn = "hidden";
     deleteButtonOff = "";
     renderViewButtons();
@@ -219,14 +218,35 @@ $(function() {
   function renderViewButtons() {
     $('.viewButtons').empty();
     $('.viewButtons').append(
-      '<div class="btn-group">'+
+      '<div class="btn-group">' +
       '<div class="' + addButtonOn + '"><button class="addFormsOn btn btn-success">Pokaz opcje dodawania</button></div>' +
       '<div class="' + addButtonOff + '"><button class="addFormsOff btn btn-success">Ukryj opcje dodawania</button></div>' +
       '<div class="' + deleteButtonOn + '"><button class="deleteButtonsOn btn btn-danger">Pokaz opcje usuwania</button></div>' +
-      '<div class="' + deleteButtonOff + '"><button class="deleteButtonsOff btn btn-danger">Ukryj opcje usuwania</button></div>'+
+      '<div class="' + deleteButtonOff + '"><button class="deleteButtonsOff btn btn-danger">Ukryj opcje usuwania</button></div>' +
       '</div>'
     )
   }
+
+  $('#existingBeneficiaries').on('click', '.delete-button-beneficiary', function(e) {
+    e.preventDefault();
+    console.log(e.target);
+    ajax.ajaxDeleteCallback('/beneficiaries/' + $(e.target).data('beneficiary'), function(response) {})
+    renderExistingBeneficiariesList('/beneficiaries');
+  })
+
+  $('#beneficiariesProjects').on('click', '.delete-button-project', function(e) {
+    e.preventDefault();
+    console.log(e.target);
+    ajax.ajaxDeleteCallback('/projects/' + $(e.target).data('project'), function(response) {});
+    renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
+  })
+
+  $('#projectsTasks').on('click', '.delete-button-task', function(e) {
+    e.preventDefault();
+    console.log($(e.target).data('task'));
+    ajax.ajaxDeleteCallback('/tasks/' + $(e.target).data('task'), function(response) {});
+    renderProjectsTasksList('/tasks/project/' + selectedProject.id);
+  })
 
   renderExistingBeneficiariesList('/beneficiaries');
   renderViewButtons();

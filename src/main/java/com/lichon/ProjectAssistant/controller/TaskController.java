@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lichon.ProjectAssistant.entity.Task;
@@ -37,8 +38,9 @@ public class TaskController {
 		taskRepository.save(task);
 	}
 	
-	@DeleteMapping
-	private void deleteTask(@RequestBody Task task) {
+	@DeleteMapping(value = "/{id}")
+	private void deleteTask(@PathVariable long id) {
+		Task task = taskRepository.getOne(id);
 		taskRepository.delete(task);
 	}
 
