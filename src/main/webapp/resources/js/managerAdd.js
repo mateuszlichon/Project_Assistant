@@ -17,7 +17,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#existingBeneficiaries').append('<button type="button" class="btn btn-info btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
-        '<div class="delete-button hidden"><button type="button" class="btn btn-danger" id="delete-beneficiary-'+elem.id+'">usun</button></div>' +
+          '<div class="delete-button-beneficiary hidden"><button type="button" class="btn btn-danger" id="delete-beneficiary-' + elem.id + '">usun</button></div>' +
           '<div class="beneficiariesDetails" id="beneficiary' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -30,7 +30,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#beneficiariesProjects').append('<button type="button" class="btn btn-info btn-block projects-choice" data-project=' + elem.id + '>' + elem.name + '</button>' +
-        '<div class="delete-button hidden"><button type="button" class="btn btn-danger" id="delete-project-'+elem.id+'">usun</button></div>' +
+          '<div class="delete-button-project hidden"><button type="button" class="btn btn-danger" id="delete-project-' + elem.id + '">usun</button></div>' +
           '<div class="projectsDetails" id="project' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -43,7 +43,7 @@ $(function() {
       var data = response.content;
       response.forEach(function(elem) {
         $('#projectsTasks').append('<button type="button" class="btn btn-info btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
-        '<div class="delete-button hidden"><button type="button" class="btn btn-danger" id="delete-task-'+elem.id+'">usun</button></div>' +
+          '<div class="delete-button-task hidden"><button type="button" class="btn btn-danger" id="delete-task-' + elem.id + '">usun</button></div>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -112,6 +112,7 @@ $(function() {
     adjustChoiceCollor($(e.target), $('.beneficiaries-choice'));
     selectedProject = undefined;
     updateAddView();
+    updateDeleteView();
     $('.beneficiariesDetails').empty();
     $('#beneficiary' + $(e.target).data('beneficiary') + 'Details').append('<p class="text-center">' + beneficiaryDescription + '</p>');
   })
@@ -132,6 +133,7 @@ $(function() {
     adjustChoiceCollor($(e.target), $('.projects-choice'));
     $('.projectsDetails').empty();
     updateAddView();
+    updateDeleteView();
     $('#project' + $(e.target).data('project') + 'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
 
@@ -141,6 +143,7 @@ $(function() {
     adjustChoiceCollor($(e.target), $('.task-choice'));
     showTaskDetails('/tasks/' + $(e.target).data('task'));
     updateAddView();
+    updateDeleteView();
     $('#task' + $(e.target).data('task') + 'Details').append('<p class="text-center">' + taskDescription + '</p>');
   })
 
@@ -159,15 +162,18 @@ $(function() {
   })
 
   $('.viewButtons').on('click', '.deleteButtonsOn', function() {
+    console.log('test');
     deleteButtonOn = "hidden";
     deleteButtonOff = "";
     renderViewButtons();
+    updateDeleteView();
   })
 
   $('.viewButtons').on('click', '.deleteButtonsOff', function() {
     deleteButtonOn = "";
     deleteButtonOff = "hidden";
     renderViewButtons();
+    updateDeleteView();
   })
 
   function updateAddView() {
@@ -188,16 +194,35 @@ $(function() {
       $('#taskForm').addClass('hidden');
     }
 
-    console.log(selectedProject);
+  }
+
+  function updateDeleteView() {
+    if (deleteButtonOff == "") {
+      $('.delete-button-beneficiary').removeClass('hidden');
+    } else {
+      $('.delete-button-beneficiary').addClass('hidden');
+    }
+    if (selectedBeneficiary != undefined && deleteButtonOff == "") {
+      $('.delete-button-project').removeClass('hidden');
+    } else {
+      $('.delete-button-project').addClass('hidden');
+    }
+
+    if (selectedProject != undefined && deleteButtonOff == "") {
+      $('.delete-button-task').removeClass('hidden');
+    } else {
+      $('.delete-button-task').addClass('hidden');
+    }
+
   }
 
   function renderViewButtons() {
     $('.viewButtons').empty();
     $('.viewButtons').append(
-      '<button type="button" class="addFormsOn '+ addButtonOn+'">Pokaz opcje dodawania</button>'+
-      '<button type="button" class="addFormsOff '+ addButtonOff+'">Ukryj opcje dodawania</button>'+
-      '<button type="button" class="deleteButtonsOn '+ deleteButtonOn+'">Pokaz opcje usuwania</button>' +
-      '<button type="button" class="deleteButtonsOff '+ deleteButtonOff+'">Ukryj opcje usuwania</button>'
+      '<button type="button" class="addFormsOn ' + addButtonOn + '">Pokaz opcje dodawania</button>' +
+      '<button type="button" class="addFormsOff ' + addButtonOff + '">Ukryj opcje dodawania</button>' +
+      '<button type="button" class="deleteButtonsOn ' + deleteButtonOn + '">Pokaz opcje usuwania</button>' +
+      '<button type="button" class="deleteButtonsOff ' + deleteButtonOff + '">Ukryj opcje usuwania</button>'
     )
   }
 
