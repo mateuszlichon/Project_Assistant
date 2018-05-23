@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,15 +26,21 @@ public class BeneficiaryController {
 	private List<Beneficiary> getAllBeneficiaries() {
 		return beneficiaryRepository.findAll();
 	}
-	
+
 	@GetMapping("/{id}")
 	private Optional<Beneficiary> getBeneficiaryById(@PathVariable long id) {
 		return beneficiaryRepository.findById(id);
 	}
-	
+
 	@PostMapping("")
 	private void createBeneficiary(@RequestBody Beneficiary beneficiary) {
 		beneficiaryRepository.save(beneficiary);
+	}
+
+	@DeleteMapping(value = "/{id}")
+	private void deleteTask(@PathVariable long id) {
+		Beneficiary beneficiary = beneficiaryRepository.getOne(id);
+		beneficiaryRepository.delete(beneficiary);
 	}
 
 }
