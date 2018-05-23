@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,6 +30,9 @@ public class Task {
 
 	@OneToMany
 	private Set<Subtask> subtask;
+
+	@ManyToOne
+	private Project project;
 
 	public Task() {
 		super();
@@ -80,6 +84,14 @@ public class Task {
 
 	public void setParticipantAmount(int participantAmount) {
 		this.participantAmount = participantAmount;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 }

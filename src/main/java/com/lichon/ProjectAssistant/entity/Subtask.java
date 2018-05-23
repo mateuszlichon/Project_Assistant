@@ -20,7 +20,7 @@ public class Subtask {
 
 	private String name;
 
-	private String address;
+	private String city;
 
 	private int numberOfParticipants;
 
@@ -52,12 +52,12 @@ public class Subtask {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getCity() {
+		return city;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public int getNumberOfParticipants() {

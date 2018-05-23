@@ -2,6 +2,7 @@ package com.lichon.ProjectAssistant.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Project {
 	@OneToOne
 	private Beneficiary beneficiary;
 
-	@OneToMany
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	private Set<Task> task;
 
 	public Project() {
