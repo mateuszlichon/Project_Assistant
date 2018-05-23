@@ -33,11 +33,9 @@ $(function() {
   function renderProjectsTasksList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
       $('#projectsTasks').empty();
+      console.log(response);
       var data = response.content;
-      projectDescription = "";
-      projectDescription = '<li>wojewodztwo: ' + response.voivodeship + '</li>';
-      selectedProject = response;
-      response.task.forEach(function(elem) {
+      response.forEach(function(elem) {
         $('#projectsTasks').append('<button type="button" class="btn btn-warning btn-block task-choice" data-task=' + elem.id + '>' + elem.name + '</button>' +
           '<div class="tasksDetails" id="task' + elem.id + 'Details"></div><br/>');
       })
@@ -52,6 +50,14 @@ $(function() {
       beneficiaryDescription = "";
       beneficiaryDescription = '<li>id@: ' + response.id + '</li>' +
         '<li>nazwa: ' + response.name + '</li>';
+    })
+  }
+
+  function showProjectDetails(endpoint) {
+    ajax.ajaxGetCallback(endpoint, function(response) {
+      projectDescription = "";
+      projectDescription = '<li>wojewodztwo: ' + response.voivodeship + '</li>';
+      selectedProject = response;
     })
   }
 
@@ -86,18 +92,12 @@ $(function() {
     e.preventDefault();
     var task = formUtil.createObjectFromForm($('#task'));
     task.project = selectedProject;
-    // project.beneficiary = selectedBeneficiary;
     ajax.ajaxPostCallback("/tasks", task, function(response) {
     })
-    // selectedProject.task.push(task);
-    // var project = selectedProject;
-    // ajax.ajaxPutCallback("/projects", project, function(response) {
-    //
-    // })
     $('#taskName').val("");
     $('#groupAmount').val("");
     $('#participantAmount').val("");
-    // renderBeneficiariesProjectList('/projects/beneficiary/' + selectedBeneficiary.id);
+    renderProjectsTasksList('/tasks/project/' + selectedProject.id);
   })
 
   $('#existingBeneficiaries').on('click', '.beneficiaries-choice', function(e) {
@@ -110,7 +110,8 @@ $(function() {
 
   $('#beneficiariesProjects').on('click', '.projects-choice', function(e) {
     e.preventDefault();
-    renderProjectsTasksList('/projects/' + $(e.target).data('project'));
+    showProjectDetails('/projects/' + $(e.target).data('project'));
+    renderProjectsTasksList('/tasks/project/' + $(e.target).data('project'));
     $('.projectsDetails').empty();
     $('#project' + $(e.target).data('project') + 'Details').append('<p class="text-center">' + projectDescription + '</p>');
   })
