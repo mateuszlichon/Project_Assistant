@@ -12,7 +12,7 @@ $(function() {
       $('#existingBeneficiaries').empty();
       var data = response.content;
       response.forEach(function(elem) {
-        $('#existingBeneficiaries').append('<button type="button" class="btn btn-secondary btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
+        $('#existingBeneficiaries').append('<button type="button" class="btn btn-primary btn-block beneficiaries-choice" data-beneficiary=' + elem.id + '>' + elem.name + '</button>' +
           '<div class="beneficiariesDetails" id="beneficiary' + elem.id + 'Details"></div><br/>');
       })
     })
@@ -104,6 +104,10 @@ $(function() {
     e.preventDefault();
     renderBeneficiariesProjectList('/projects/beneficiary/' + $(e.target).data('beneficiary'));
     showBeneficiaryDetails('/beneficiaries/' + $(e.target).data('beneficiary'));
+    $('.beneficiaries-choice').removeClass('btn-primary');
+    $('.beneficiaries-choice').addClass('btn-light');
+    $(e.target).removeClass('btn-light');
+    $(e.target).addClass('btn-danger');
     $('.beneficiariesDetails').empty();
     $('#beneficiary' + $(e.target).data('beneficiary') + 'Details').append('<p class="text-center">' + beneficiaryDescription + '</p>');
   })
