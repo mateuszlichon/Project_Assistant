@@ -57,15 +57,23 @@ $(function() {
       $('.beneficiaryName').empty();
       $('.beneficiaryName').append(response.name);
       beneficiaryDescription = "";
-      beneficiaryDescription = '<li>id@: ' + response.id + '</li>' +
-        '<li>nazwa: ' + response.name + '</li>';
+      beneficiaryDescription = '<div class="card bg-light">'+
+        '<div class="card-body text-center">'+
+          '<p class="card-text"><li>id@: ' + response.id + '</li>'+
+          '<li>nazwa: ' + response.name + '</li></p>'+
+        '</div>'+
+      '</div>'
     })
   }
 
   function showProjectDetails(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
       projectDescription = "";
-      projectDescription = '<li>wojewodztwo: ' + response.voivodeship + '</li>';
+      projectDescription = '<div class="card bg-light">'+
+        '<div class="card-body text-center">'+
+          '<p class="card-text"><li>wojewodztwo: ' + response.voivodeship + '</li></p>'+
+        '</div>'+
+      '</div>'
       selectedProject = response;
     })
   }
@@ -73,8 +81,12 @@ $(function() {
   function showTaskDetails(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
       taskDescription = "";
-      taskDescription = '<li>liczba grup: ' + response.groupAmount + '</li>' +
-        '<li>liczba uczestnikow: ' + response.participantAmount + '</li>';
+      taskDescription = '<div class="card bg-light">'+
+        '<div class="card-body text-center">'+
+          '<p class="card-text"><li>liczba grup: ' + response.groupAmount + '</li>'+
+          '<li>liczba uczestnikow: ' + response.participantAmount + '</li></p>'+
+        '</div>'+
+      '</div>'
     })
   }
 
