@@ -59,7 +59,7 @@
           <form method="post" class="hidden" id="beneficiaryForm">
             <br><br>
             <fieldset>
-              <legend>Nowy beneficjent</legend>
+              <legend class="text-center">Nowy beneficjent</legend>
               <div class="form-group">
                 <div id="beneficiary" class="container">
                   <!-- <label for="beneficiaryName">Nazwa beneficjenta</label> -->
@@ -76,7 +76,7 @@
           <form method="post" class="hidden" id="projectForm">
             <br><br>
             <fieldset>
-              <legend>Nowy projekt beneficjenta
+              <legend class="text-center">Nowy projekt beneficjenta
                 <div class="beneficiaryName"></div>
               </legend>
               <div class="form-group">
@@ -97,8 +97,8 @@
           <form method="post" class="hidden" id="taskForm">
             <br><br>
             <fieldset>
-              <legend>Nowe zadanie
-                <div class="taskName"></div>
+              <legend class="text-center">Nowe zadanie projektu
+                <div class="projectName"></div>
               </legend>
               <div class="form-group">
                 <div id="task" class="container">

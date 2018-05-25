@@ -75,6 +75,8 @@ $(function() {
         '</div>'+
       '</div>'
       selectedProject = response;
+      $('.projectName').empty();
+      $('.projectName').append(response.name);
     })
   }
 
