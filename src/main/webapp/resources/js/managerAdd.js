@@ -10,6 +10,8 @@ $(function() {
   var addButtonOff = "hidden";
   var deleteButtonOn = "";
   var deleteButtonOff = "hidden";
+  var editButtonOn = "";
+  var editButtonOff = "hidden";
 
   function renderExistingBeneficiariesList(endpoint) {
     ajax.ajaxGetCallback(endpoint, function(response) {
@@ -175,6 +177,20 @@ $(function() {
     updateDeleteView();
   })
 
+  $('.viewButtons').on('click', '.editButtonsOn', function() {
+    editButtonOn = "hidden";
+    editButtonOff = "";
+    renderViewButtons();
+    // updateDeleteView();
+  })
+
+  $('.viewButtons').on('click', '.editButtonsOff', function() {
+    editButtonOn = "";
+    editButtonOff = "hidden";
+    renderViewButtons();
+    // updateDeleteView();
+  })
+
   function updateAddView() {
     if (addButtonOff == "") {
       $('#beneficiaryForm').removeClass('hidden');
@@ -223,6 +239,8 @@ $(function() {
       '<div class="' + addButtonOff + '"><button class="addFormsOff btn btn-success">Ukryj opcje dodawania</button></div>' +
       '<div class="' + deleteButtonOn + '"><button class="deleteButtonsOn btn btn-danger">Pokaz opcje usuwania</button></div>' +
       '<div class="' + deleteButtonOff + '"><button class="deleteButtonsOff btn btn-danger">Ukryj opcje usuwania</button></div>' +
+      '<div class="' + editButtonOn + '"><button class="editButtonsOn btn btn-primary">Pokaz opcje edycji</button></div>' +
+      '<div class="' + editButtonOff + '"><button class="editButtonsOff btn btn-primary">Ukryj opcje edycji</button></div>' +
       '</div>'
     )
   }
