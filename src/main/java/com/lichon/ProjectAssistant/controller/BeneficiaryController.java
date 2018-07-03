@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lichon.ProjectAssistant.entity.Beneficiary;
-import com.lichon.ProjectAssistant.entity.Project;
 import com.lichon.ProjectAssistant.repository.BeneficiaryRepository;
 
 @CrossOrigin
