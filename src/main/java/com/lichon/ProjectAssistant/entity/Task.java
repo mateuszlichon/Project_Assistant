@@ -12,6 +12,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Task {
 
@@ -32,6 +35,7 @@ public class Task {
 	private Set<Subtask> subtask;
 
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project project;
 
 	public Task() {
