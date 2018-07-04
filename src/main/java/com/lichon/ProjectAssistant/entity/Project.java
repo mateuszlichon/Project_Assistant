@@ -1,5 +1,7 @@
 package com.lichon.ProjectAssistant.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,8 @@ public class Project {
 	private String name;
 
 	private String Voivodeship;
+	
+	private Date startDate;
 
 	@OneToOne
 	private Beneficiary beneficiary;
@@ -54,6 +58,14 @@ public class Project {
 
 	public void setBeneficiary(Beneficiary beneficiary) {
 		this.beneficiary = beneficiary;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 }
