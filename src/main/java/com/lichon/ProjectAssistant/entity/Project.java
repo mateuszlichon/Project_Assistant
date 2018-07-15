@@ -1,18 +1,22 @@
 package com.lichon.ProjectAssistant.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Project {
@@ -34,6 +38,10 @@ public class Project {
 	@JoinColumn(name="beneficiary_id")
 	@JsonBackReference
 	private Beneficiary beneficiary;
+	
+	@OneToMany(mappedBy="project", cascade = CascadeType.ALL, orphanRemoval=true)
+	@JsonManagedReference
+	private Set<Task> task;
 
 	public Project() {
 		super();
@@ -85,6 +93,14 @@ public class Project {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Set<Task> getTask() {
+		return task;
+	}
+
+	public void setTask(Set<Task> task) {
+		this.task = task;
 	}
 
 }

@@ -8,14 +8,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Task {
@@ -38,7 +39,8 @@ public class Task {
 
 	@ManyToOne
 	@NotFound(action=NotFoundAction.IGNORE)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name="project_id")
+	@JsonBackReference
 	private Project project;
 
 	public Task() {
