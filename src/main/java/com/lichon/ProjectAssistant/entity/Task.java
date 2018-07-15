@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -35,6 +37,7 @@ public class Task {
 	private Set<Subtask> subtask;
 
 	@ManyToOne
+	@NotFound(action=NotFoundAction.IGNORE)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project project;
 

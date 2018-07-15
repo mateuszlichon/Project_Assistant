@@ -25,6 +25,11 @@ public class TaskController {
 	@Autowired
 	private TaskRepository taskRepository;
 	
+	@GetMapping("")
+	private List<Task> getAllTasks() {
+		return taskRepository.findAll();
+	}
+	
 	@GetMapping("/{id}")
 	private Optional<Task> getTaskById(@PathVariable long id) {
 		return taskRepository.findById(id);

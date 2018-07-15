@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 public class Project {
 
@@ -24,6 +27,7 @@ public class Project {
 	private Date endDate;
 
 	@OneToOne
+	@NotFound(action=NotFoundAction.IGNORE)
 	private Beneficiary beneficiary;
 
 	public Project() {
