@@ -7,10 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Project {
@@ -27,9 +29,10 @@ public class Project {
 	
 	private Date endDate;
 
-	@OneToOne
+	@ManyToOne
 	@NotFound(action=NotFoundAction.IGNORE)
-	@JoinColumn(name="beneficiary_id", nullable=false)
+	@JoinColumn(name="beneficiary_id")
+	@JsonBackReference
 	private Beneficiary beneficiary;
 
 	public Project() {
