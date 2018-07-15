@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.NotFound;
@@ -28,6 +29,7 @@ public class Project {
 
 	@OneToOne
 	@NotFound(action=NotFoundAction.IGNORE)
+	@JoinColumn(name="beneficiary_id", nullable=false)
 	private Beneficiary beneficiary;
 
 	public Project() {
